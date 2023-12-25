@@ -1,0 +1,203 @@
+* {
+  /*    forma de resetar, tirar de todos os elementos essas 
+        configurações que tem/vem um valor padrão e especificar 
+        no código como vc vai querer em cada um */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* deixa mais limpo o preenchimento dos espaços internos das caixas
+      a medida do tamanho da caixa passa a ser medida através 
+      da borda, essa configuração nao deixa que entre em conflito 
+      o width x padding (altura x preenchimento interno) */
+}
+
+:root {
+  --text-color: white;
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(255, 255, 255, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/moon-stars.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/sun.svg);
+}
+
+body {
+  /*background-image: url(./assets/bg-mobile.jpg);
+            url é função/valor
+            e quando coloca uma imagem de fundo, por padrão ela sai repetidas vezes no backgroud do navegador. Para configurar isso é com background- repeat
+    background-repeat: no-repeat;
+            para reposicionar essa imagem de fundo:
+    background-position: top center;
+            se deixar só "center" fica centralizado somente o eixo x, o eixo y fica metade para fora da tela
+   background-size: cover;
+            é sobre o tamanho... "cover" vai cobrir todo espaço da tela visível"
+            
+        E TUDO ISSO DA PRA RESUMIR/agrupar EM:
+        background: color image repeat position/size */
+  background: var(--bg-url) no-repeat top center/cover;
+}
+
+body * {
+  /*   o * é o seletor unversal ou seja irá aplicar as configurações para todo o body*/
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  width: 360px;
+  /*    largura. 
+        ela não é respeitada se coloca padding nessa box, ai 
+        tem que colocar box-sizing: border-box; nas configurações universais 
+        (*) do documento do css*/
+  /*    height: 712px;  altura geralmente não precisa especificar*/
+  border: 2px solid rgba(255, 255, 255, 0.062); /* quando tem uma caixa que vc não ta entendendo/    enxergando, bote borda*/
+  margin: 56px auto 0px;
+  /*       margin: para alinhar a caixa na página. Mas no CSS tem uma regra que as 
+       bordas sup e inf não preenchem automáticas,  vai ficar centralizado 
+       somente entre esquerda e direita*/
+  /*   padding-top: 56px; ou margin top*/
+  padding: 0 24px;
+}
+
+/* PROFILE */
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+
+#profile img {
+  width: 112px; /*tira a largura do figma mesmo. 
+    E a altura geralmente vc não precisa definir no CSS, pq geralmente ela segue o contéudo da caixa !!!! É melhor ter a altura fluida
+        não recebe o margin auto pq é um elemento com propriedade inline, para conseguir configurar a disposição desse elemento na página deve mudar p/ display: block; ou colocar a propriedade text-align:center; na configuração do parent
+  */
+}
+
+#profile p {
+  font-weight: 500; /*peso de 500, é um pouco mais negrito*/
+  /* font-size: 16px; ->  por padrão os navegadores ja tem esse tamanho, não precisa colocar*/
+  line-height: 24px; /* altura da linha*/
+  margin-top: 8px;
+}
+
+/* SWITCH */
+
+#switch {
+  position: relative;
+  /* limita o posicionamento do botão light/dark mode dentro da caixa switch*/
+  width: 64px;
+  margin: 4px auto;
+  /* o switch tem display block, portanto para centralizar esse objeto tem que colocar margin 0 em cima e em baixo e auto nas laterais
+nesse caso colocou margin de 4 px em cima e em baixo*/
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: #f5f5f5 var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  transform: translateY(-50%);
+  /* foi usada a estratégia de alinhar objeto com o top e transform
+  top jogou o topo do objeto 
+  transform reposionou o objeto no eixo y*/
+}
+
+.light #switch button {
+  right: 0;
+  left: initial;
+}
+
+#switch span {
+  /* tem por padrão display inline, entao tem que mudar p poder receber algumas propriedades como a height */
+  display: flex;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  /* tem que colocar webkit pra ser reconhecido essa configuração em alguns navegadores*/
+  border-radius: 9999px;
+}
+
+/*   links / lista   */
+ul {
+  list-style: none; /* tira os pontos "de item" da lista */
+  display: flex;
+  flex-direction: column; /* colocou as caixas em coluna*/
+  gap: 16px;
+  padding: 24px 0;
+
+  /*  display: flex no ul deixaria todos os itens/li em linha dentro da caixa (tipo uma linha com 4 colunas)*/
+}
+
+ul li a {
+  /* vai ocupar os 360px que definimos no width do container pq é um display block
+
+          a tag A é um display inline, portando sua caixa iria ocupar só o tamanho do conteúdo,
+          se aplicarmos o display flex ai sua caixa vai ocupar todo width definido 
+          */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 24px;
+
+  background: var(--surface-color);
+  border: 1.5px solid var(--stroke-color);
+  /* o 0.1 e 0.5 ditam a transparência da cor*/
+  border-radius: 8px; /* arredondamento de borda */
+  backdrop-filter: blur(4px);
+
+  text-decoration: none; /* para tirar o sublinhado de hiperlink do texto das caixas*/
+  font-weight: 500;
+
+  transition: background 0.3s;
+}
+
+/* seletor para configurar o comportamento quando passa o mouse em cima. Hover ou pseudo-selector*/
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+#social-links {
+  display: flex; /* colocar p habilitar o gap */
+  justify-content: center; /* alinhas os icones ao meio */
+
+  padding: 24px 0;
+  font-size: 24px; /* aumenta o tamanho dos icones */
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  transition: background 0.2s;
+  border-radius: 50%;
+}
+
+#social-links a:hover {
+  background: var(--highlight-color);
+}
+
+footer {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 14px;
+}

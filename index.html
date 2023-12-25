@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!-- definindo um documento html 5
+            index= índice
+            ! com emmet vc tem a base do seu html
+      -->
+<html lang="pt-br" class="">
+  <!-- 
+    com essa classe adicionada podemos adicionar variáveis no CSS
+    
+    "<html" = document element / root element = elemento raíz do html
+    tem um atributo/propriedade (lang)
+
+    e tem duas tags filhas/node/nó/children: head e body
+     -->
+  <head>
+    <!-- tag responsável por ajustar configurações 
+        do nosso documento, não são visíveis para quem 
+        ta acessando a nossa página (exceto o title)-->
+
+    <!-- link de fonte de letra, só copiar do google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta charset="UTF-8" />
+    <!-- define os conjuntos de caracteres que a página aceita-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- compatibilidade com navegadores mais antigos-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- viewport é tudo que é visivel da página na janela. Define que o conteúdo vai ter a largura do dispositivo. Quando o site abre no celular e no computador com a largura certa. Initial Scale é que  a página começa sem zoom, mas o usuário pode aumentar depois-->
+    <title>DevLinks</title>
+    <link rel="stylesheet" href="./style.css" />
+    <!-- rel = relation = relacionamento
+        ou seja essa tag é um relacionamento com um arquivo do tipo style sheet
+        href é atributo de referência, e será na mesma pasta (usa ./ e ja aparece as opções)-->
+  </head>
+  <body>
+    <!-- parte visível da página
+    começar com div para criar uma caixa genérica com nome cointainer-->
+    <div id="container">
+      <div id="profile">
+        <img
+          src="./assets/Avatarisa.png"
+          alt="Imagem de bombeira com mangueira no ombro"
+        />
+        <p>@isabelasiilva</p>
+      </div>
+
+      <div id="switch" onclick="toggleMode()">
+        <button></button>
+        <span></span>
+      </div>
+
+      <ul>
+        <li>
+          <a href="#">Inscrever-se no Canal</a>
+        </li>
+        <li>
+          <a href="#">Baixar meu Ebook</a>
+        </li>
+        <li>
+          <a href="#">Ver meu portfólio</a>
+        </li>
+        <li>
+          <a href="#" target="_blank">Conheça o Explorer</a>
+          <!-- target é atributo, quando recebe o valor black vai 
+            abrir o link numa nova aba, não saindo da sua atual-->
+        </li>
+      </ul>
+      <!-- ul é para lista não ordenada, li é um item da lista-->
+      <div id="social-links">
+        <a href="https://github.com" target="_blank">
+          <ion-icon name="logo-github"></ion-icon>
+        </a>
+
+        <a href="https://instagram.com/isabelasiilva" target="_blank">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a>
+
+        <a href="https://youtube.com" target="_blank">
+          <ion-icon name="logo-youtube"></ion-icon>
+        </a>
+
+        <a href="https://linkedin.com" target="_blank">
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a>
+      </div>
+
+      <footer>
+        <!-- tag usada para rodapé de site-->
+        Feito com ♥ pela
+        <a href="https://rocketseat.com.br" target="_blank">Rocketseat</a>
+      </footer>
+    </div>
+
+    <!-- ion icons installation instructions-->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

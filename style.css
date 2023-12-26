@@ -111,17 +111,30 @@ nesse caso colocou margin de 4 px em cima e em baixo*/
 
   position: absolute;
   top: 50%;
-  left: 0;
+  left: 0; /* PROPRIEDADE FINAL DO SLIDE BACK*/
   z-index: 1;
   transform: translateY(-50%);
   /* foi usada a estratégia de alinhar objeto com o top e transform
   top jogou o topo do objeto 
   transform reposionou o objeto no eixo y*/
+
+  animation: slide-back-do-botao 0.2s;
+  /* nao precisa do forwards pq ele vai manter as propriedades finais do animation, 
+  ou seja a propriedade final do slide back já é o left 0, entao fica redundante deixar o forwards*/
 }
 
 .light #switch button {
-  right: 0;
+  /*right: 0;
   left: initial;
+  nao vai precisar desses comandos acima mais, depois que colocou a animação com css
+  quando clicar e entrar o light no html, aplica-se a animação "nome da animação" no tempo determinado
+  quando coloca forwards vai manter as configurações final (o to do "slide-do-botao" que ta lá em baixo do código) ao invés de voltar o botao pro inicial*/
+  animation: slide-do-botao 0.2s forwards;
+}
+
+#switch button:hover {
+  /* quando passar o mouse em cima do botão switch vai acontecer isso*/
+outline: 8px solid var(--highlight-color);
 }
 
 #switch span {
@@ -205,17 +218,40 @@ footer {
 }
 
 /* aprendendo sobre o media queries
-    no css tudo que começa com @ é um et rules
+    no css tudo que começa com @ é um at rules
             a media queries só funciona quando lá no seu head do html tem o meta de viewport, 
             que faz a adaptação do conteudo pela largura da viewport
             <meta name="viewport" content= "widht...*/
 @media (min-width: 700px) {
     :root {
-      --bg-url: url(./assets/bg-destktop.jpg);
+      --bg-url: url(./assets/bg-desktop.jpg);
     }
 
     .light {
-      --bg-url: url(./assets/bg-destktop-light.jpg);
+      --bg-url: url(./assets/bg-desktop-light.jpg);
     }
 }
 
+/* vamos aplicar uma at rule pro nosso switch deslizar mais suave quando mudar
+vai criar uma animação
+
+slide-do-botao é o nome que foi dado
+ai a chave disso é colocar de onde vai começar até onde vai terminar*/
+
+@keyframes slide-do-botao {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back-do-botao {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
+}

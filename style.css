@@ -78,7 +78,7 @@ body * {
 }
 
 #profile img {
-  width: 112px; /*tira a largura do figma mesmo. 
+  width: 180px; /*tira a largura do figma mesmo. 
     E a altura geralmente vc não precisa definir no CSS, pq geralmente ela segue o contéudo da caixa !!!! É melhor ter a altura fluida
         não recebe o margin auto pq é um elemento com propriedade inline, para conseguir configurar a disposição desse elemento na página deve mudar p/ display: block; ou colocar a propriedade text-align:center; na configuração do parent
   */
@@ -86,7 +86,7 @@ body * {
 
 #profile p {
   font-weight: 500; /*peso de 500, é um pouco mais negrito*/
-  /* font-size: 16px; ->  por padrão os navegadores ja tem esse tamanho, não precisa colocar*/
+  font-size: 20px; /* ->  por padrão os navegadores ja colocam o tamanho 16px, dependendo não precisa colocar*/
   line-height: 24px; /* altura da linha*/
   margin-top: 8px;
 }
@@ -188,6 +188,14 @@ ul li a {
 ul li a:hover {
   background: var(--surface-color-hover);
   border: 1.5px solid var(--text-color);
+}
+
+#legenda-social-links {
+  font-weight: 500; 
+  font-size: 16px; 
+  line-height: 14px; /* altura da linha*/
+  margin-top: 15px;
+  text-align: center;   
 }
 
 #social-links {

@@ -45,6 +45,7 @@ body {
         E TUDO ISSO DA PRA RESUMIR/agrupar EM:
         background: color image repeat position/size */
   background: var(--bg-url) no-repeat top center/cover;
+  height: 100vh; /*altura do background em 100% da view port height */
 }
 
 body * {
@@ -202,3 +203,19 @@ footer {
   text-align: center;
   font-size: 14px;
 }
+
+/* aprendendo sobre o media queries
+    no css tudo que começa com @ é um et rules
+            a media queries só funciona quando lá no seu head do html tem o meta de viewport, 
+            que faz a adaptação do conteudo pela largura da viewport
+            <meta name="viewport" content= "widht...*/
+@media (min-width: 700px) {
+    :root {
+      --bg-url: url(./assets/bg-destktop.jpg);
+    }
+
+    .light {
+      --bg-url: url(./assets/bg-destktop-light.jpg);
+    }
+}
+

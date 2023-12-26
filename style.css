@@ -54,7 +54,8 @@ body * {
 }
 
 #container {
-  width: 360px;
+  width: 100%;
+  max-width: 588px;
   /*    largura. 
         ela não é respeitada se coloca padding nessa box, ai 
         tem que colocar box-sizing: border-box; nas configurações universais 
